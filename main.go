@@ -117,7 +117,13 @@ func main() {
 		port = "8080"
 	}
 
-	http.HandleFunc("/", weatherHandler)
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		if r.URL.Path == "/" {
+			w.Write([]byte("rodando"))
+			return
+		}
+		weatherHandler(w, r)
+	})
 	log.Printf("Server running on :%s", port)
 	if err := http.ListenAndServe(":"+port, nil); err != nil {
 		log.Fatal(err)
