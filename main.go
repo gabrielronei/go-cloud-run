@@ -90,6 +90,7 @@ func weatherHandler(w http.ResponseWriter, r *http.Request) {
 
 	city, err := getCityByCEP(cep)
 	if err != nil {
+		log.Printf("getCityByCEP error for cep %s: %v", cep, err)
 		w.WriteHeader(http.StatusNotFound)
 		w.Write([]byte("can not find zipcode"))
 		return
@@ -97,6 +98,7 @@ func weatherHandler(w http.ResponseWriter, r *http.Request) {
 
 	tempC, err := getTemperature(city)
 	if err != nil {
+		log.Printf("getTemperature error for city %s: %v", city, err)
 		http.Error(w, "failed to get temperature", http.StatusInternalServerError)
 		return
 	}
