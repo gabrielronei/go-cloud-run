@@ -4,7 +4,7 @@ Serviço em Go que recebe um CEP, identifica a cidade via ViaCEP e retorna as te
 
 ## URL do Cloud Run
 
-> _a ser preenchido após o deploy_
+https://go-cloud-run-242000668090.europe-west1.run.app
 
 ## Endpoint
 
@@ -15,7 +15,7 @@ GET /{cep}
 ### Exemplo
 
 ```bash
-curl https://<cloud-run-url>/01310100
+curl https://go-cloud-run-242000668090.europe-west1.run.app/01310100
 ```
 
 ### Respostas
@@ -66,7 +66,11 @@ Os testes cobrem:
 ```bash
 gcloud run deploy cep-weather \
   --source . \
-  --region us-central1 \
+  --region europe-west1 \
   --allow-unauthenticated \
   --set-env-vars WEATHER_API_KEY=sua_key
 ```
+## Resultado
+- Imagem do projeto rodando certinho
+<img width="1443" height="138" alt="image" src="https://github.com/user-attachments/assets/6c394735-10d2-4b7d-ba89-5152d668748b" />
+
